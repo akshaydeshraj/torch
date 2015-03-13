@@ -26,6 +26,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private GoogleApiClient client;
     private String nodeId;
 
+    private static String[] MESSAGES = {"on","off"};
+    private int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,22 +87,27 @@ public class MainActivity extends Activity implements View.OnClickListener{
         /**
          * Sends a message to the connected mobile device, telling it to show a Toast.
          */
-        private void sendMessage() {
+        private void sendMessage(final String message) {
             if (nodeId != null) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         client.blockingConnect(CONNECTION_TIME_OUT_MS, TimeUnit.MILLISECONDS);
-                        Wearable.MessageApi.sendMessage(client, nodeId, MESSAGE, null);
+                        Wearable.MessageApi.sendMessage(client, nodeId, message, null);
                         client.disconnect();
                     }
                 }).start();
             }
         }
 
-
     @Override
     public void onClick(View view) {
-        sendMessage();
+        if(count==0){
+            sendMessage("off");
+            count=1;
+        }else{
+            count=1;
+            sendMessage("on");
+        }
     }
 }
