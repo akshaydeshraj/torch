@@ -19,7 +19,7 @@ public class ListenerService extends WearableListenerService {
     private VolleySingleton mVolleySingleton;
     private RequestQueue mRequestQueue;
 
-    private static final String BASE_URL= "192.168.208.177:3000/";
+    private static final String BASE_URL= "http://192.168.208.177:3000/";
     private static final String ON = BASE_URL+"on";
     private static final String OFF = BASE_URL+"off";
 
