@@ -21,5 +21,6 @@ public class TorchApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance=this;
     }
 }
