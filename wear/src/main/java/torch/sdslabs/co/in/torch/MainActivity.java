@@ -26,7 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private GoogleApiClient client;
     private String nodeId;
 
-    private static String[] MESSAGES = {"on","off"};
+    /*private static String[] MESSAGES = {"on","off"};*/
     private int count = 0;
 
     @Override
@@ -106,7 +106,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             sendMessage("off");
             count=1;
         }else{
-            count=1;
+            count=0;
             sendMessage("on");
         }
     }
